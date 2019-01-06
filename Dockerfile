@@ -1,11 +1,8 @@
-FROM nginx
+FROM nginx:stable-alpine
 
-RUN apt-get update && apt-get install -y supervisor
-
-RUN apt-get clean && rm -rf /var/cache/apt/archives/*
+RUN apk update && apk add supervisor
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 ADD sha1check.sh /usr/local/bin/nginx-reload
 
 RUN chmod +x /usr/local/bin/nginx-reload
