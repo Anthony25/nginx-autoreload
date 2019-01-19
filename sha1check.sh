@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 while true
 do
         result="$(sha1sum /etc/nginx/conf.d/*.conf | sha1sum | awk '{print $1}')"
