@@ -7,4 +7,4 @@ ADD sha1check.sh /usr/local/bin/nginx-reload
 
 RUN chmod +x /usr/local/bin/nginx-reload
 
-ENTRYPOINT ["/usr/bin/supervisord"]
+ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
