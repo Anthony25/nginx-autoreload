@@ -8,7 +8,7 @@ do
             #result=$(</tmp/sha1.txt)
             echo "$result" > /tmp/sha1.txt >/dev/stdout 2>&1
          else
-           oldvalue=$(</tmp/sha1.txt)
+           oldvalue=$(cat /tmp/sha1.txt)
          fi
 
 
@@ -30,7 +30,7 @@ do
            if [ $? -eq 0 ];then
              echo Configuration"Configuration Changing, Reloading Nginx...">/dev/stdout 2>&1
 
-             service nginx reload
+             pkill -HUP `cat /var/run/nginx.pid`
            else
              echo "Test Nginx Configuration failed...">/dev/stdout 2>&1
 
